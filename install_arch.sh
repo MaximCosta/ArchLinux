@@ -20,7 +20,7 @@ echo "> Editing /etc/hosts..."
 curl https://gist.github.com/fanfan54/35418fe39aa5485706d86e8db094da5f/raw/7538cbffd1af2465ea250b94d1c98b5081b7f610/hosts -o /etc/hosts
 chmod 644 /etc/hosts
 echo "> Recreating init cpio..."
-pacstrap /mnt base linux linux-firmware nano grub dhcpcd 
+#pacstrap /mnt base linux linux-firmware nano grub dhcpcd 
 mkinitcpio -p linux
 echo "> Setting root password to 'password'..."
 usermod --password $(openssl passwd -1 password) root
