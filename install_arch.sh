@@ -21,7 +21,7 @@ echo "LANG=en_US.UTF-8" > /etc/locale.conf
 echo "> Setting the persistant keymap to French AZERTY..."
 echo "KEYMAP=fr-latin1" > /etc/vconsole.conf
 echo "> Setting hostname to labasr.lan..."
-echo "asrlab.lan" > /etc/hostname
+echo "labasr.lan" > /etc/hostname
 echo "> Installing wget (to download config files from GitHub Gist)..."
 pacman --noconfirm -S wget lvm2
 sleep 1
