@@ -39,6 +39,10 @@ echo "> Recreating init cpio..."
 mkinitcpio -p linux
 sleep 1
 
+echo "> install dhcpcd & xfce4"
+pacman --noconfirm -S xfce4 dhcpcd 
+sleep 1
+
 echo "> Setting root password to 'password'..."
 usermod --password $(openssl passwd -1 password) root
 echo "> Installing the GRUB 2 bootloader (in UEFI mode)..."
