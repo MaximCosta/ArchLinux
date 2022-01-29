@@ -142,11 +142,11 @@ pacstrap /mnt base-devel
 sleep 1
 
 echo "> Installing /mnt packages..."
-pacstrap /mnt base linux linux-firmware nano grub dhcpcd 
+pacstrap /mnt base linux nano
 sleep 1
 
 echo "> Editing mkinitcpio.conf to be able to boot on LVM..."
-curl https://gist.github.com/fanfan54/7c642af2a366afc34663a60e004b16a9/raw/e61b736dfbeaec06c9643a99bb93fa24dc6e12f2/mkinitcpio.conf -o /mnt/etc/mkinitcpio.conf
+curl https://raw.githubusercontent.com/MaximCosta/ArchLinux/main/mkinitcpio.conf -o /mnt/etc/mkinitcpio.conf
 chmod 644 /mnt/etc/mkinitcpio.conf
 sleep 1
 
