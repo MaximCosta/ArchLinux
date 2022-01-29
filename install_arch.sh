@@ -26,6 +26,9 @@ echo "> Installing wget (to download config files from GitHub Gist)..."
 pacman --noconfirm -S wget lvm2
 sleep 1
 
+echo "set your passwd"
+passwd
+
 echo "> Editing /etc/hosts..."
 curl https://raw.githubusercontent.com/MaximCosta/ArchLinux/main/host -o /etc/hosts
 chmod 644 /etc/hosts
@@ -42,10 +45,6 @@ echo "> Installing the GRUB 2 bootloader (in UEFI mode)..."
 pacman --noconfirm -S grub efibootmgr
 grub-install --target=x86_64-efi --efi-directory=/efi --bootloader-id=GRUB
 sleep 1
-
-# echo "> Editing the default settings for GRUB (workaround to detect LVM partitions)..."
-# curl https://gist.github.com/fanfan54/ffbc4d64af24fe8a1f52c95fa506c8e7/raw/fe852b2b2245cea74b189e905c3a58ab9df0e015/grub -o /etc/default/grub
-# chmod 644 /etc/default/grub
 
 echo "> Generating config file for Grub"
 grub-mkconfig -o /boot/grub/grub.cfg
