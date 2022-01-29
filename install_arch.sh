@@ -27,7 +27,9 @@ pacman --noconfirm -S wget lvm2
 sleep 1
 
 echo "set your passwd"
+echo "[i] ENTER YOUR PASSWORD"
 passwd root
+sleep 1
 
 echo "> Editing /etc/hosts..."
 curl https://raw.githubusercontent.com/MaximCosta/ArchLinux/main/host -o /etc/hosts
