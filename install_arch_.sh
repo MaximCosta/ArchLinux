@@ -29,7 +29,7 @@ echo "> Creating the LVM partition for Arch Linux (16GB)..."
 parted -s /dev/sda mkpart primary ext2 550MB 16550MB
 sleep 1
 
-echo "> Creating the Deb partition for Arch Linux (16GB)..."
+echo "> Creating the Deb partition for Debian (16GB)..."
 parted -s /dev/sda mkpart primary ext2 16550MB 33000MB
 sleep 1
 
@@ -61,15 +61,15 @@ echo "> Creating the volume group debivg..."
 vgcreate debivg /dev/sda3
 sleep 1
 
-echo "> Creating the logical volume for ROOT (9GB)..."
+echo "> Creating the logical volume for ROOT (10GB)..."
 lvcreate -L 10G debivg -n ROOT
 sleep 1
 
-echo "> Creating the logical volume for HOME (5GB)..."
+echo "> Creating the logical volume for HOME (4.5GB)..."
 lvcreate -L 4500M debivg -n HOME
 sleep 1
 
-echo "> Creating the logical volume for BOOT (400MB)..."
+echo "> Creating the logical volume for BOOT (500MB)..."
 lvcreate -L 500M debivg -n BOOT
 sleep 1
 
