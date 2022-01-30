@@ -30,7 +30,7 @@ parted -s /dev/sda mkpart primary ext2 550MB 16550MB
 sleep 1
 
 echo "> Creating the Deb partition for Debian (16GB)..."
-parted -s /dev/sda mkpart primary ext2 16550MB 33000MB
+parted -s /dev/sda mkpart primary ext2 16550MB 34000MB
 sleep 1
 
 echo "> Setting the lvm flag on the partition..."
@@ -115,10 +115,6 @@ sleep 1
 
 echo "> Enabling swap for Arch Linux..."
 swapon /dev/archvg/SWAP
-sleep 1
-
-echo "> Enabling swap for Arch Linux..."
-swapon /dev/debivg/SWAP
 sleep 1
 
 echo "> Mounting /root..."
