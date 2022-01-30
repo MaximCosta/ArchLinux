@@ -93,21 +93,21 @@ echo "> Formatting the logical volume for SWAP to linux-swap..."
 mkswap /dev/archvg/SWAP
 sleep 1
 
-echo "> Formatting the root partition for Debian to ext4..."
-mkfs.ext4 /dev/sda3
-sleep 1
+#echo "> Formatting the root partition for Debian to ext4..."
+#mkfs.ext4 /dev/sda3
+#sleep 1
 
-echo "> Formatting the home partition for Debian to ext4..."
-mkfs.ext4 /dev/sda4
-sleep 1
+#echo "> Formatting the home partition for Debian to ext4..."
+#mkfs.ext4 /dev/sda4
+#sleep 1
 
-echo "> Formatting the boot partition for Debian to ext2..."
-mkfs.ext2 /dev/sda5
-sleep 1
+#echo "> Formatting the boot partition for Debian to ext2..."
+#mkfs.ext2 /dev/sda5
+#sleep 1
 
-echo "> Formatting the swap partition for Debian to linux-swap..."
-mkswap /dev/sda6
-sleep 1
+#echo "> Formatting the swap partition for Debian to linux-swap..."
+#mkswap /dev/sda6
+#sleep 1
 
 echo "> Enabling swap for Arch Linux..."
 swapon /dev/archvg/SWAP
