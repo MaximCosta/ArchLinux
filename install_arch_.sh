@@ -29,25 +29,29 @@ echo "> Creating the LVM partition for Arch Linux (16GB)..."
 parted -s /dev/sda mkpart primary ext2 550MB 16550MB
 sleep 1
 
+echo "> Creating the Deb partition for Arch Linux (16GB)..."
+parted -s /dev/sda mkpart primary ext2 16550MB 33000MB
+sleep 1
+
 echo "> Setting the lvm flag on the partition..."
 parted -s /dev/sda set 2 lvm on
 sleep 1
 
-echo "> Creating the root partition for Debian (10GB)..."
-parted -s /dev/sda mkpart primary ext4 16550MB 26550MB
-sleep 1
+#echo "> Creating the root partition for Debian (10GB)..."
+#parted -s /dev/sda mkpart primary ext4 16550MB 26550MB
+#sleep 1
 
-echo "> Creating the home partition for Debian (4.5GB)..."
-parted -s /dev/sda mkpart primary ext4 26550MB 31050MB
-sleep 1
+#echo "> Creating the home partition for Debian (4.5GB)..."
+#parted -s /dev/sda mkpart primary ext4 26550MB 31050MB
+#sleep 1
 
-echo "> Creating the boot partition for Debian (500MB)..."
-parted -s /dev/sda mkpart primary ext2 31050MB 31550MB
-sleep 1
+#echo "> Creating the boot partition for Debian (500MB)..."
+#parted -s /dev/sda mkpart primary ext2 31050MB 31550MB
+#sleep 1
 
-echo "> Creating the swap partition for Debian (500MB)..."
-parted -s /dev/sda mkpart primary linux-swap 31550MB 32050MB
-sleep 1
+#echo "> Creating the swap partition for Debian (500MB)..."
+#parted -s /dev/sda mkpart primary linux-swap 31550MB 32050MB
+#sleep 1
 
 echo "> Creating the volume group archvg..."
 vgcreate archvg /dev/sda2
