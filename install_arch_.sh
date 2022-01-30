@@ -29,28 +29,12 @@ echo "> Creating the LVM partition for Arch Linux (16GB)..."
 parted -s /dev/sda mkpart primary ext2 550MB 16550MB
 sleep 1
 
-#echo "> Creating the Deb partition for Arch Linux (16GB)..."
-#parted -s /dev/sda mkpart primary ext2 16550MB 33000MB
-#sleep 1
+echo "> Creating the Deb partition for Arch Linux (16GB)..."
+parted -s /dev/sda mkpart primary ext2 16550MB 33000MB
+sleep 1
 
 echo "> Setting the lvm flag on the partition..."
 parted -s /dev/sda set 2 lvm on
-sleep 1
-
-echo "> Creating the root partition for Debian (10GB)..."
-parted -s /dev/sda mkpart primary ext4 16550MB 26550MB
-sleep 1
-
-echo "> Creating the home partition for Debian (4.5GB)..."
-parted -s /dev/sda mkpart primary ext4 26550MB 31050MB
-sleep 1
-
-echo "> Creating the boot partition for Debian (500MB)..."
-parted -s /dev/sda mkpart primary ext2 31050MB 31550MB
-sleep 1
-
-echo "> Creating the swap partition for Debian (500MB)..."
-parted -s /dev/sda mkpart primary linux-swap 31550MB 32050MB
 sleep 1
 
 echo "> Creating the volume group archvg..."
@@ -73,6 +57,26 @@ echo "> Creating the logical volume for SWAP (500MB)..."
 lvcreate -L 500M archvg -n SWAP
 sleep 1
 
+echo "> Creating the volume group debivg..."
+vgcreate debivg /dev/sda3
+sleep 1
+
+echo "> Creating the logical volume for ROOT (9GB)..."
+lvcreate -L 10G debivg -n ROOT
+sleep 1
+
+echo "> Creating the logical volume for HOME (5GB)..."
+lvcreate -L 4500M debivg -n HOME
+sleep 1
+
+echo "> Creating the logical volume for BOOT (400MB)..."
+lvcreate -L 500M debivg -n BOOT
+sleep 1
+
+echo "> Creating the logical volume for SWAP (500MB)..."
+lvcreate -L 500M debivg -n SWAP
+sleep 1
+
 echo "> Formatting the EFI ESP partition to fat32..."
 mkfs.fat -F32 /dev/sda1
 sleep 1
@@ -93,24 +97,28 @@ echo "> Formatting the logical volume for SWAP to linux-swap..."
 mkswap /dev/archvg/SWAP
 sleep 1
 
-echo "> Formatting the root partition for Debian to ext4..."
-mkfs.ext4 /dev/sda3
+echo "> Formatting the logical volume for ROOT to ext4..."
+mkfs.ext4 /dev/debivg/ROOT
 sleep 1
 
-echo "> Formatting the home partition for Debian to ext4..."
-mkfs.ext4 /dev/sda4
+echo "> Formatting the logical volume for HOME to ext4..."
+mkfs.ext4 /dev/debivg/HOME
 sleep 1
 
-echo "> Formatting the boot partition for Debian to ext2..."
-mkfs.ext2 /dev/sda5
+echo "> Formatting the logical volume for BOOT to ext2..."
+mkfs.ext2 /dev/debivg/BOOT
 sleep 1
 
-echo "> Formatting the swap partition for Debian to linux-swap..."
-mkswap /dev/sda6
+echo "> Formatting the logical volume for SWAP to linux-swap..."
+mkswap /dev/debivg/SWAP
 sleep 1
 
 echo "> Enabling swap for Arch Linux..."
 swapon /dev/archvg/SWAP
+sleep 1
+
+echo "> Enabling swap for Arch Linux..."
+swapon /dev/debivg/SWAP
 sleep 1
 
 echo "> Mounting /root..."
