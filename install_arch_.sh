@@ -33,10 +33,6 @@ echo "> Setting the lvm flag on the partition..."
 parted -s /dev/sda set 2 lvm on
 sleep 1
 
-echo "> Creating the volume group archvg..."
-vgcreate debvg /dev/sda2
-sleep 1
-
 echo "> Creating the root partition for Debian (10GB)..."
 parted -s /dev/sda mkpart primary ext4 16550MB 26550MB
 sleep 1
