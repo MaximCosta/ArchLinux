@@ -1,6 +1,6 @@
 #!/bin/sh
 pacman –Syu
-pacman -S xfce4 xfce4-goodies xorg xorg-init lightdm lightdm-gtk-greeter openssh zsh git dnf
+pacman -S xfce4 xfce4-goodies xorg xorg-init lightdm lightdm-gtk-greeter openssh zsh git dnf virtualbox-guest-utils
 pacman --sync sudo
 cp /etc/X11/xinit/xinitrc ~/.xinitrc
 systemctl enable sshd.service
