@@ -20,6 +20,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 chsh -s $(which zsh)
 echo "exec zsh" >> ~/.bashrc
+echo "change theme to gnzh"
 echo "replace plugins=(git) by :"
 echo "plugins=(fzf git history-substring-search colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-z)"
 
@@ -32,6 +33,7 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 chsh -s $(which zsh)
 echo "exec zsh" >> ~/.bashrc
+echo "change theme to gnzh"
 echo "replace plugins=(git) by :"
 echo "plugins=(fzf git history-substring-search colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-z)"
 
@@ -44,5 +46,6 @@ git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf
 ~/.fzf/install
 chsh -s $(which zsh)
 echo "exec zsh" >> ~/.bashrc
+echo "change theme to gnzh"
 echo "replace plugins=(git) by :"
 echo "plugins=(fzf git history-substring-search colored-man-pages zsh-autosuggestions zsh-syntax-highlighting zsh-z)"
