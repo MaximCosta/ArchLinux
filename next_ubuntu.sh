@@ -2,7 +2,7 @@
 sudo apt update
 sudo apt upgrade
 sudo apt update
-sudo apt install apache2 curl
+sudo apt install apache2 curl zsh git
 sudo chown -R pi:www-data /var/www/html/
 sudo chmod -R 770 /var/www/html/
 wget -O verif_apache.html http://127.0.0.1
